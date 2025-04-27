@@ -114,9 +114,7 @@ export async function authenticate(
     await signIn('credentials', formData);
   } catch (error) {
     if (error instanceof AuthError) {
-      // This is supposed to be "error.type" according the tutorial, but "type" is not accessible.
-      // Ignoring TypeScript error for now.
-      // @ts-ignore
+      // @ts-expect-error this is supposed to be "error.type" according the tutorial, but "type" is not accessible—it works though 🤷‍♂️.
       switch (error.type) {
         case 'CredentialsSignin':
           return 'Invalid credentials.';
